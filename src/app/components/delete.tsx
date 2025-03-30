@@ -1,7 +1,7 @@
 import {toast, ToastContainer} from "react-toastify";
 import {useEffect} from "react";
 
-export default async function DeleteFunc(deleteId: number,func: () => void) {
+export default async function DeleteFunc(deleteId: number,func: (page:number) => void) {
     await fetch('http://localhost:8002/api/v1/main/delete/',{
         method: 'DELETE',
         headers: {
@@ -15,7 +15,7 @@ export default async function DeleteFunc(deleteId: number,func: () => void) {
             if (data.success === 204) {
                 toast.success('Видалено успішно')
                 console.log('чи доходить до виклику тої ф-ї')
-                func()
+                func(1)
             }
         })
         .catch(err => {
